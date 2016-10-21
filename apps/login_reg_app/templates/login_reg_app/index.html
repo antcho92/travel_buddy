@@ -23,10 +23,10 @@
                 <br>
                 Username: <input type="text" name="username" value="">
                 <br>
-                <p>Password should be at least 8 characters*</p>
-                Password: <input type="text" name="pw" value="">
+                Password: <input type="password" name="pw" value="">
                 <br>
-                Confirm Password: <input type="text" name="pw_confirmation" value="">
+                <p>Password should be at least 8 characters*</p>
+                Confirm Password: <input type="password" name="pw_confirmation" value="">
                 <br>
                 <input type="submit" name="submit" value="Register">
             </form>
@@ -39,7 +39,7 @@
                 {% csrf_token %}
                 Username: <input type="text" name="username" value="">
                 <br>
-                Password: <input type="text" name="pw" value="">
+                Password: <input type="password" name="pw" value="">
                 <br>
                 <input type="submit" name="login" value="Login">
             </form>

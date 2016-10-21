@@ -19,17 +19,22 @@
       {% endif %}
       {% if trip %}
         <h1>{{trip.destination}}</h1>
-        <p>Planned By: {{trip.trip_maker}}</p>
-        <p>Description: {{trip.plan}}</p>
-        <p>Travel Date From: {{trip.start_date}}</p>
-        <p>Travel Date To: {{trip.end_date}}</p>
+        <ul class='trip'>
+          <li>Planned By: {{trip.trip_maker}}</li>
+          <li>Description: {{trip.plan}}</li>
+          <li>Travel Date From: {{trip.start_date.date}}</li>
+          <li>Travel Date To: {{trip.end_date.date}}</li>
+        </ul>
+
         <br>
         <h2>Others users' joining the trip:</h2>
+        <ul>
         {% if trip.travelers.all %}
           {% for person in trip.travelers.all %}
-            <p>{{person.name}}</p>
+            <li>{{person.name}}</li>
           {% endfor %}
         {% endif %}
+        </ul>
       {% endif %}
     </header>
   </body>

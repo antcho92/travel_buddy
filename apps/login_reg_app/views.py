@@ -10,7 +10,7 @@ def index(request):
     else:
         return render(request, 'login_reg_app/index.html')
 
-# shows a list of all users
+# shows a list of all users for debugging purposes ;)
 def all(request):
     users = User.objects.all()
     context = {

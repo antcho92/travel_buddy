@@ -4,6 +4,7 @@ from ..login_reg_app.models import User
 from datetime import datetime
 from django.utils.encoding import python_2_unicode_compatible
 
+
 class TripManager(models.Manager):
     def add_trip(self, form_data, user):
         errors = []

@@ -1,3 +1,9 @@
+head * {
+  display: inline;
+}
+#logout {
+  vertical-align: top;
+}
 input {
     display: inline-block;
 }
@@ -6,6 +12,8 @@ li {
 }
 .messages {
     border: 1px solid black;
+    display: block;
+    width: 500px;
 }
 .error {
     color: red;
@@ -13,10 +21,19 @@ li {
 .success {
     color: green;
 }
-
+.thead {
+  background: gray;
+}
 .row1 {
-    background: pink;
+    background: #D3D3D3;
 }
 .row2 {
     background: #FFF;
+}
+table {
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 2px solid black;
+  padding: 5px;
 }

@@ -9,7 +9,7 @@
   <body>
     <header>
       <h1>Welcome {{user.name}}!</h1>
-      <a href="{% url 'users:logout' %}">Logout</a>
+      <a id='logout' href="{% url 'users:logout' %}">Logout</a>
       {% if messages %}
           <ul class='messages'>
           {% for message in messages %}
@@ -21,7 +21,7 @@
     <div id="yourTrips">
       <h2>Your Trip Schedules</h2>
       <table>
-          <tr class='row1'>
+          <tr class='thead'>
               <th>Destination</th>
               <th>Travel Start Date</th>
               <th>Travel End Date</th>
@@ -31,8 +31,8 @@
           {% for trip in user.trips.all %}
           <tr class="{% cycle 'row2' 'row1' %}">
               <th><a href="{% url 'travels:destination' trip_id=trip.id %}">{{trip.destination}}</a></th>
-              <th>{{trip.start_date}}</th>
-              <th>{{trip.end_date}}</th>
+              <th>{{trip.start_date.date}}</th>
+              <th>{{trip.end_date.date}}</th>
               <th>{{trip.plan}}</th>
           </tr>
           {% endfor %}
@@ -42,7 +42,7 @@
     <div id="others">
       <h2>Other User's Travel Plans</h2>
       <table>
-          <tr class='row1'>
+          <tr class='thead'>
               <th>Name</th>
               <th>Destination</th>
               <th>Travel Start Date</th>
@@ -54,8 +54,8 @@
           <tr class="{% cycle 'row2' 'row1' %}">
               <th>{{trip.trip_maker}}</th>
               <th><a href="{% url 'travels:destination' trip_id=trip.id %}">{{trip.destination}}</a></th>
-              <th>{{trip.start_date}}</th>
-              <th>{{trip.end_date}}</th>
+              <th>{{trip.start_date.date}}</th>
+              <th>{{trip.end_date.date}}</th>
               <th><a href="{% url 'travels:join' trip_id=trip.id %}">Join</a></th>
           </tr>
           {% endfor %}

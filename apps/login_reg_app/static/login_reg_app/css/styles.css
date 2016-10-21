@@ -6,6 +6,8 @@ li {
 }
 .messages {
     border: 1px solid black;
+    display: block;
+    width: 500px;
 }
 .error {
     color: red;
@@ -19,4 +21,12 @@ li {
 }
 .row2 {
     background: #FFF;
+}
+#register, #login {
+  border: 2px solid black;
+  display: inline-block;
+  padding: 20px;
+}
+#login {
+  vertical-align: top;
 }
