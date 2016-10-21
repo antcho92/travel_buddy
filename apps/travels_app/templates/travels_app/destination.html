@@ -29,7 +29,7 @@
         <br>
         <h2>Others users' joining the trip:</h2>
         <ul>
-        {% if user in users %}
+        {% if users %}
           {% for person in users %}
             <li>{{person.name}}</li>
           {% endfor %}
