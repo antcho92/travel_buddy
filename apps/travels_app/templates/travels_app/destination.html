@@ -29,8 +29,8 @@
         <br>
         <h2>Others users' joining the trip:</h2>
         <ul>
-        {% if trip.travelers.all %}
-          {% for person in trip.travelers.all %}
+        {% if user in users %}
+          {% for person in users %}
             <li>{{person.name}}</li>
           {% endfor %}
         {% endif %}
