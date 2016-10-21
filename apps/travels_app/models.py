@@ -27,8 +27,9 @@ class TripManager(models.Manager):
             trip.travelers.add(user)
             return (True, "Trip successfully added")
     def join_trip(self, trip_id, user):
+        print("adding trip to user's trips")
         trip = Trip.objects.get(id=trip_id)
-        user.trips.add(trip)
+        trip.travelers.add(user)
         return("Successfully added trip to your schedule!")
 
 

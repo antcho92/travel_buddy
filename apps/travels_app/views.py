@@ -8,9 +8,10 @@ from datetime import datetime
 # Create your views here.
 def index(request):
     if 'user_id' in request.session:
+        user = User.objects.get(id=request.session['user_id'])
         context = {
-            'user': User.objects.get(id=request.session['user_id']),
-            'trips': Trip.objects.all()
+            'user': user,
+            'trips': Trip.objects.all().exclude(travelers=user)
         }
         return render(request, 'travels_app/index.html', context)
     else:
@@ -45,6 +46,6 @@ def destination(request, trip_id):
 def join(request, trip_id):
     print("trying to join")
     user = User.objects.get(id=request.session['user_id'])
-    #validation = Trip.objects.join_trip(trip_id, user)
-
+    validation = Trip.objects.join_trip(trip_id, user)
+    messages.success(request, validation)
     return redirect(reverse('travels:index'))
