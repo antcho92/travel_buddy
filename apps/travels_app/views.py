@@ -36,7 +36,7 @@ def submit(request):
 
 def destination(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
-    users = trip.travelers.all().exclude(id=request.session['user_id'])
+    users = trip.travelers.all().exclude(id=request.session['user_id']).exclude(id=trip.trip_maker.id)
     for user in users:
         print(user.name)
     print(trip)
