@@ -27,10 +27,10 @@
               <th>Travel End Date</th>
               <th>Plan</th>
           </tr>
-          {% if trips %}
-          {% for trip in trips %}
+          {% if user.trips.all %}
+          {% for trip in user.trips.all %}
           <tr class="{% cycle 'row2' 'row1' %}">
-              <th>{{trip.destination}}</th>
+              <th><a href="{% url 'travels:destination' trip_id=trip.id %}">{{trip.destination}}</a></th>
               <th>{{trip.start_date}}</th>
               <th>{{trip.end_date}}</th>
               <th>{{trip.plan}}</th>
@@ -53,10 +53,10 @@
           {% for trip in trips %}
           <tr class="{% cycle 'row2' 'row1' %}">
               <th>{{trip.trip_maker}}</th>
-              <th>{{trip.destination}}</th>
+              <th><a href="{% url 'travels:destination' trip_id=trip.id %}">{{trip.destination}}</a></th>
               <th>{{trip.start_date}}</th>
               <th>{{trip.end_date}}</th>
-              <th><a href="#">Join</a></th>
+              <th><a href="{% url 'travels:join' trip_id=trip.id %}">Join</a></th>
           </tr>
           {% endfor %}
           {% endif %}

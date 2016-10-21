@@ -7,11 +7,15 @@ from datetime import datetime
 
 # Create your views here.
 def index(request):
-    context = {
-        'user': User.objects.get(id=request.session['user_id']),
-        'trips': Trip.objects.all()
-    }
-    return render(request, 'travels_app/index.html', context)
+    if 'user_id' in request.session:
+        context = {
+            'user': User.objects.get(id=request.session['user_id']),
+            'trips': Trip.objects.all()
+        }
+        return render(request, 'travels_app/index.html', context)
+    else:
+        return redirect(reverse('users:index'))
+
 def add_plan(request):
     return render(request, 'travels_app/add_plan.html')
 
@@ -30,9 +34,17 @@ def submit(request):
 
 
 def destination(request, trip_id):
-    print(trip_id)
-    Trip.objects.get(id=trip_id)
+    trip = Trip.objects.get(id=trip_id)
+    print(Trip.objects.get(id=trip_id))
     context = {
         'trip': Trip.objects.get(id=trip_id)
     }
-    return render(request, 'travels_app/destination.html')
+    print(trip.travelers)
+    return render(request, 'travels_app/destination.html', context)
+
+def join(request, trip_id):
+    print("trying to join")
+    user = User.objects.get(id=request.session['user_id'])
+    #validation = Trip.objects.join_trip(trip_id, user)
+
+    return redirect(reverse('travels:index'))

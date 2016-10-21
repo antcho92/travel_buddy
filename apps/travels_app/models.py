@@ -24,8 +24,13 @@ class TripManager(models.Manager):
             print("passed validations")
             # add trip to the database
             trip = Trip.objects.create(destination=form_data['destination'], plan=form_data['plan'], trip_maker=user, start_date=start_date, end_date=end_date)
-            
+            trip.travelers.add(user)
             return (True, "Trip successfully added")
+    def join_trip(self, trip_id, user):
+        trip = Trip.objects.get(id=trip_id)
+        user.trips.add(trip)
+        return("Successfully added trip to your schedule!")
+
 
 class Trip(models.Model):
     destination = models.CharField(max_length=255)
