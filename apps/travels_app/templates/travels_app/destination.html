@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Destination</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'travels_app/css/styles.css' %}"media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <header>
+      <a href="{% url 'travels:index' %}">Home</a>
+      <a href="{% url 'users:logout' %}">Logout</a>
+      {% if messages %}
+          <ul class='messages'>
+          {% for message in messages %}
+              <li {% if message.tags %}class='{{message.tags}}'{% endif %}>{{message}}</li>
+          {% endfor %}
+          </ul>
+      {% endif %}
+      {% if trip %}
+        <h1>{{trip.destination}}</h1>
+        <p>Planned By: {{trip.trip_maker}}</p>
+        <p>Description: {{trip.plan}}</p>
+        <p>Travel Date From: {{trip.start_date}}</p>
+        <p>Travel Date To: {{trip.end_date}}</p>
+        <br>
+        <h2>Others users' joining the trip:</h2>
+        {% if trip.travelers %}
+          {% for person in trip.travelers %}
+            <p>person.name</p>
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    </header>
+  </body>
+</html>

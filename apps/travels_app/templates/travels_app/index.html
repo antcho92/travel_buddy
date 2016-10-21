@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Travel Buddy</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'travels_app/css/styles.css' %}"media="screen" title="no title"  charset="utf-8">
+  </head>
+  <body>
+    <header>
+      <h1>Welcome {{user.name}}!</h1>
+      <a href="{% url 'users:logout' %}">Logout</a>
+      {% if messages %}
+          <ul class='messages'>
+          {% for message in messages %}
+              <li {% if message.tags %}class='{{message.tags}}'{% endif %}>{{message}}</li>
+          {% endfor %}
+          </ul>
+      {% endif %}
+    </header>
+    <div id="yourTrips">
+      <h2>Your Trip Schedules</h2>
+      <table>
+          <tr class='row1'>
+              <th>Destination</th>
+              <th>Travel Start Date</th>
+              <th>Travel End Date</th>
+              <th>Plan</th>
+          </tr>
+          {% if trips %}
+          {% for trip in trips %}
+          <tr class="{% cycle 'row2' 'row1' %}">
+              <th>{{trip.destination}}</th>
+              <th>{{trip.start_date}}</th>
+              <th>{{trip.end_date}}</th>
+              <th>{{trip.plan}}</th>
+          </tr>
+          {% endfor %}
+          {% endif %}
+        </table>
+    </div>
+    <div id="others">
+      <h2>Other User's Travel Plans</h2>
+      <table>
+          <tr class='row1'>
+              <th>Name</th>
+              <th>Destination</th>
+              <th>Travel Start Date</th>
+              <th>Travel End Date</th>
+              <th>Do You Want to Join?</th>
+          </tr>
+          {% if trips %}
+          {% for trip in trips %}
+          <tr class="{% cycle 'row2' 'row1' %}">
+              <th>{{trip.trip_maker}}</th>
+              <th>{{trip.destination}}</th>
+              <th>{{trip.start_date}}</th>
+              <th>{{trip.end_date}}</th>
+              <th><a href="#">Join</a></th>
+          </tr>
+          {% endfor %}
+          {% endif %}
+      </table>
+    </div>
+    <a href="{% url 'travels:add_plan' %}">Add Travel Plan</a>
+  </body>
+</html>
