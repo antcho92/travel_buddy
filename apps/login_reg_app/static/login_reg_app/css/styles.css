@@ -5,6 +5,9 @@
 body {
   margin: 50px
 }
+h1 {
+  margin-bottom: 50px;
+}
 input {
     display: inline-block;
 }
@@ -33,6 +36,7 @@ li {
   border: 2px solid black;
   display: inline-block;
   padding: 20px;
+  margin-bottom: 50px;
 }
 #login {
   vertical-align: top;
