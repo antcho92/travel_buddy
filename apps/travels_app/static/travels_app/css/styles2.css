@@ -3,16 +3,10 @@
   margin: 0;
 }
 body {
-  margin: 50px
-}
-head * {
-  display: inline;
+  margin: 50px;
 }
 h1 {
-  margin-bottom: 50px
-}
-#logout {
-  vertical-align: top;
+  margin-top: 50px;
 }
 input {
     display: inline-block;
@@ -31,20 +25,19 @@ li {
 .success {
     color: green;
 }
-.thead {
-  background: gray;
-}
+
 .row1 {
-    background: #D3D3D3;
+    background: pink;
 }
 .row2 {
     background: #FFF;
 }
-table {
-  border-collapse: collapse;
-  margin-bottom: 50px
-}
-table, th, td {
+#register, #login {
   border: 2px solid black;
-  padding: 5px;
+  display: inline-block;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+#login {
+  vertical-align: top;
 }
