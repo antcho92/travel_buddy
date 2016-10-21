@@ -36,9 +36,11 @@ def submit(request):
 
 def destination(request, trip_id):
     trip = Trip.objects.get(id=trip_id)
+    users = trips.travelers.all.exclude(id=request.session['user_id'])
     print(Trip.objects.get(id=trip_id))
     context = {
-        'trip': Trip.objects.get(id=trip_id)
+        'trip': Trip.objects.get(id=trip_id),
+        'users': users
     }
     print(trip.travelers)
     return render(request, 'travels_app/destination.html', context)
