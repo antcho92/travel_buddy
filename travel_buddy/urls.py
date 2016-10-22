@@ -16,6 +16,31 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 
+from apps.login_reg_app.models import User as User
+from apps.travels_app.models import Trip as Trip
+
+class UserAdmin(admin.ModelAdmin):
+  pass
+admin.site.register(User, UserAdmin)
+
+class TripAdmin(admin.ModelAdmin):
+    pass
+admin.site.register(Trip, TripAdmin)
+# class FruitAdmin(admin.ModelAdmin):
+#   pass
+# admin.site.register(Fruit, FruitAdmin)
+#
+# class DonutAdmin(admin.ModelAdmin):
+#   pass
+# admin.site.register(Donut, DonutAdmin)
+#
+# class GroupAdmin(admin.ModelAdmin):
+#   pass
+# admin.site.register(Group, GroupAdmin)
+
+
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^', include('apps.default_app.urls', namespace='default')),
