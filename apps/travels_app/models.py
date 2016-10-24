@@ -19,7 +19,7 @@ class TripManager(models.Manager):
                 errors.append("Start date must be in the future")
             if start_date > end_date:
                 errors.append("Trip end date cannot be before start date")
-        if len(errors) is not 0:
+        if errors:
             return (False, errors)
         else:
             print("passed validations")

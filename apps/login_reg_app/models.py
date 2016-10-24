@@ -39,7 +39,7 @@ class UserManager(models.Manager):
         if user:
             errors.append("Username has already been used")
         # checks if there were any errors
-        if len(errors) is not 0:
+        if errors:
             return (False, errors)
         else:
             print("passed validations")
